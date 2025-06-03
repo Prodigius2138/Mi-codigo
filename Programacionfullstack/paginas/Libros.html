@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/subpaginas.css">
+    <script src="../js/libro.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="../../Programacionfullstack/paginas/index.html"><img src="../../Programacionfullstack/Assets/biblioteca.jfif" alt=""></a>
+            <a href="../../Programacionfullstack/paginas/prestamos.html"><img src="../../Programacionfullstack/Assets/prestamos.png" alt=""></a>
+            <a href="../../Programacionfullstack/paginas/Usuario.html"><img src="../../Programacionfullstack/Assets/usuario.jfif" alt=""></a>
+        </nav>
+    </header>
+    <main>
+        <div class="tabla">
+            <h3>Libros</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id Libro</th>
+                        <th>Titulo</th>
+                        <th>Autor</th>
+                        <th>Año Publicacion</th>
+                        <th>Disponible</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="contenedor-libros">
+                   
+                      
+                    </tr>
+                </tbody>                
+            </table>
+        </div>
+        <form action="../backend/routes/API.php?seccion=libros" method="post">
+            <label for="ID">Id</label>
+            <input type="text" name="ID" id="ID LIBRO" required>
+            <label for="Titulo">Titulo</label>
+            <input type="text" name="Titulo" id="Titulo" required>
+            <label for="Autor">Autor</label>
+            <input type="text" name="Autor" id="Autor"required>
+            <label for="Año Publicacion">Año Publicacion</label>
+            <input type="text" name="Anio Publicacion" id="Anio Publicacion"required>
+            <label for="Disponible">Disponible</label>
+            <input type="text" name="Disponible" id="Disponible" required>
+            <input type="submit" value="Guardar">
+            <button type="submit">enviar</button>
+        </form>       
+    </main>
+</body>
+
+</html>
