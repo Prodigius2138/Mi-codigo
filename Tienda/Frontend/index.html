@@ -1,0 +1,39 @@
+--
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Productos</title>
+        <script src="../Js/producto.js"></script>
+
+</head>
+
+<body>
+    <h1>Gestión de Productos</h1>
+
+
+    <pre id="output"></pre>
+
+    <form id="formAgregarProducto" onsubmit="event.preventDefault(); agregarProductoDesdeFormulario();">
+        <h2>Agregar Producto</h2>
+        <label>Nombre: <input type="text" id="nombreProducto" required></label><br>
+        <label>Descripción: <input type="text" id="descripcionProducto" required></label><br>
+        <label>Precio: <input type="number" id="precioProducto" step="0.01" required></label><br>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <div id="productosContainer"></div>
+    <script>
+ // Función para agregar producto desde el formulario
+        function agregarProductoDesdeFormulario() {
+            let nombre = document.getElementById('nombreProducto').value;
+            let descripcion = document.getElementById('descripcionProducto').value;
+            let precio = parseFloat(document.getElementById('precioProducto').value);
+            agregarProducto(nombre, descripcion, precio);
+        }
+        listarProductos();
+    </script>
+</body>
+
+</html>
