@@ -1,39 +1,58 @@
---
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Gestión de Productos</title>
-        <script src="../Js/producto.js"></script>
-
+  <meta charset="UTF-8">
+  <title>Gestión de Productos</title>
+  <script src="../Js/producto.js"></script>
+  <link rel="stylesheet" href="../Frontend/Style/index.css">
 </head>
 
 <body>
-    <h1>Gestión de Productos</h1>
+  <h1>Gestión de Productos</h1>
 
+  <div class="contenedor">
 
-    <pre id="output"></pre>
+    <div class="tabla-container">
+      <input type="text" id="buscarInput" placeholder=" Buscar productos" onkeyup="filtrarProductos()">
 
-    <form id="formAgregarProducto" onsubmit="event.preventDefault(); agregarProductoDesdeFormulario();">
+      <div id="productosContainer"></div>
+    </div>
+
+    <div class="formulario-container">
+      <form id="formAgregarProducto" onsubmit="event.preventDefault(); agregarProductoDesdeFormulario();">
         <h2>Agregar Producto</h2>
-        <label>Nombre: <input type="text" id="nombreProducto" required></label><br>
-        <label>Descripción: <input type="text" id="descripcionProducto" required></label><br>
-        <label>Precio: <input type="number" id="precioProducto" step="0.01" required></label><br>
+        <label>Nombre: <input type="text" id="nombreProducto"  maxlength="20" required></label><br>
+        <label>Descripción: <input type="text" id="descripcionProducto" maxlength="30" required></label><br>
+        <label>Precio: <input type="number" id="precioProducto" step="0.01" maxlength="30" required></label><br>
         <button type="submit">Agregar</button>
-    </form>
+      </form>
+    </div>
+  </div>
 
-    <div id="productosContainer"></div>
-    <script>
- // Función para agregar producto desde el formulario
-        function agregarProductoDesdeFormulario() {
-            let nombre = document.getElementById('nombreProducto').value;
-            let descripcion = document.getElementById('descripcionProducto').value;
-            let precio = parseFloat(document.getElementById('precioProducto').value);
-            agregarProducto(nombre, descripcion, precio);
-        }
-        listarProductos();
-    </script>
+  <div id="formularioEdicion" style="display:none; margin-top: 20px;">
+    <h3>Editar Producto</h3>
+    <input type="hidden" id="editId">
+    <label>Nombre: <input type="text" id="editNombre"></label><br>
+    <label>Descripción: <input type="text" id="editDescripcion"></label><br>
+    <label>Precio: <input type="number" id="editPrecio" step="0.01"></label><br>
+    <button onclick="guardarEdicion()">Guardar Cambios</button>
+    <button onclick="cancelarEdicion()">Cancelar</button>
+  </div>
+
+  <script>
+    function agregarProductoDesdeFormulario() {
+      let nombre = document.getElementById('nombreProducto').value;
+      let descripcion = document.getElementById('descripcionProducto').value;
+      let precio = (document.getElementById('precioProducto').value);
+      agregarProducto(nombre, descripcion, precio);
+    }
+
+    listarProductos();
+  </script>
+  <div id="formularioEdicion" class="modal">
+</div>
+
 </body>
 
 </html>
